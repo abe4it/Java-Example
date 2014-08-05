@@ -1,0 +1,94 @@
+
+<project name="ant_example" default="all" basedir="." >
+
+	<property environment="myenv" />
+	<property name="jtest.dir" location="C:\Program Files\Parasoft\Jtest8.0" />
+	<property name="jtest.workspace" location="${myenv.USERPROFILE}/Application Data/Parasoft/Jtest/workspace" />
+	<property name="jtestcli" location="C:\Program Files\Parasoft\Jtest8.0\jtestcli.exe" />
+	<property name="config" value=" -config 'builtin://Default Configuration'" />
+    
+    <target name="all" >
+        <echo message="Jtest is testing 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example' -report '${myenv.USERPROFILE}\My Documents\JtestReport.xml' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+
+    <target name="bank" >
+        <echo message="Jtest is testing examples.bank in 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example\examples\bank' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+
+    <target name="eval" >
+        <echo message="Jtest is testing examples.eval in 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example\examples\eval' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+
+    <target name="leaks" >
+        <echo message="Jtest is testing examples.leaks in 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example\examples\leaks' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+
+	<target name="singletons" >
+        <echo message="Jtest is testing examples.singletons in 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example\examples\singletons' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+
+    <target name="stackmachine" >
+        <echo message="Jtest is testing examples.stackmachine in 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example\examples\stackmachine' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+
+    <target name="unit" >
+        <echo message="Jtest is testing examples.unit in 'Jtest Example'" />
+        <exec dir="." executable="${jtestcli}" >
+            <arg line="${config} -resource 'Jtest Example\examples\unit' -localsettings '${jtest.workspace}\Jtest Example\examples.properties'" />
+        </exec>
+    </target>
+    
+	
+    <target name="usage" >
+        <echo message="" />
+        <echo message="ant_example build file"/>
+        <echo message="-------------------------"/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+        <echo message="all  --> tests all classes in Jtest Example project"/>
+		<echo message=""/>
+        <echo message="bank  --> tests all classes in Jtest Example"/>
+        <echo message="          examples.bank package"/>
+		<echo message=""/>
+        <echo message="eval  --> tests all classes in Jtest Example"/>
+        <echo message="          examples.eval package"/>
+		<echo message=""/>	
+        <echo message="leaks  --> tests all classes in Jtest Example"/>
+        <echo message="           examples.leaks package"/>
+		<echo message=""/>	
+        <echo message="singletons  --> tests all classes in Jtest Example"/>
+        <echo message="                examples.singletons package"/>
+		<echo message=""/>  
+        <echo message="stackmachine  --> tests all classes in Jtest Example"/>
+        <echo message="                  examples.stackmachine package"/>
+		<echo message=""/>
+        <echo message="unit  --> tests all classes in Jtest Example"/>
+        <echo message="          examples.unit package"/>
+		<echo message=""/>      
+		<echo message=""/>
+		<echo message="Note: Please close Jtest UI before running this test."/>
+		<echo message="      Jtest Example project must be loaded into the"/>
+		<echo message="      workspace for this example to work properly."/>
+		<echo message=""/>
+    </target>
+
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ObjectData>
+<InternalProperties category="user" type="examples.nbank.CreditCard" identifier="12404015021134157689899"/>
+ <Ast ver="1.0">
+  <Type ref="2" name="examples.nbank.CreditCard"/>
+  <Type ref="3" name="int"/>
+  <Type ref="4" name="java.lang.String"/>
+  <ConstrDecl elemNum="6" declType="2" ref="1" name="examples.nbank.CreditCard" params="3 4 4 4 4 4"/>
+  <ConstrInv constr="1" elemNum="6" ref="0" name="examples.nbank.CreditCard" args="5 6 7 8 9 10">
+   <ConstExpr ref="5" type="3" value="1000"/>
+   <ConstExpr ref="6" type="4" value="Account123"/>
+   <ConstExpr ref="7" type="4" value="111-22-3333"/>
+   <ConstExpr ref="8" type="4" value="Acme"/>
+   <ConstExpr ref="9" type="4" value="90210"/>
+   <ConstExpr ref="10" type="4" value="1111-2222-3333-4444"/>
+  </ConstrInv>
+ </Ast>
+</ObjectData>

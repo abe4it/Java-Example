@@ -1,0 +1,4 @@
+Initial Balance,Deposit Amount,Expected Balance ($2 transaction fee)
+0,2,0
+10,5,13
+100,52,150

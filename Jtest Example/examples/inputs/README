@@ -1,0 +1,67 @@
+To run the tests, select the class and choose a Jtest configuration
+that executes test cases.
+
+NOTE: the test configuration should have the "Test suites in scope" 
+checkbox selected in the "Generation -> Search" tab.
+
+A InputsTestCase defines a fixture to run a test case repeatedly.
+The same test case is run repeatedly using a list of inputs
+
+To use this feature you need to:
+
+1) Provide a "public void test(...)" method that executes the
+   test case. This method can take any number and type of arguments.
+   
+2) Initialize an "Object[][] inputs" variable with the list of inputs
+   you want to execute the "test(...)" method with.
+   Each list element should be an "Object[]" array with the
+   arguments to be passed to the "test(...)" method. Primitive
+   arguments should be wrapped into their corresponding class.
+   
+3) Define a "public static Test suite()" method in your test class.
+   See example.
+   
+   
+This is an example usage:
+
+    public class ParseIntTest extends jtest.InputsTestCase {
+        public void test (String string, int parsed_value) {
+            assertTrue (Integer.parseInt (string) == parsed_value);
+        }
+        public static Test suite () {
+            Object[][] inputs = new Object [][] {
+                  {"1", new Integer (1)}
+                , {"5", new Integer (5)}
+                , {"0", new Integer (0)}
+            };
+            return suite (inputs);
+        }
+    }
+
+
+The inputs list can be read from a formatted data file using 
+the "readPrimitiveInputs(String file_path)" method if the
+"test(...)" method needs only primitive and String arguments.
+
+The "readPrimitiveInputs" method reads inputs from a formatted data file.
+Each line in the file should list the inputs for a test case separated
+by spaces. Lines starting with the character <code>'#'</code> and blank
+lines are ignored.
+
+For example, the ParseIntTest could also have been written as:
+
+    public class ParseIntTest extends jtest.InputsTestCase {
+        public void test (String string, int parsed_value) {
+            assertTrue (Integer.parseInt (string) == parsed_value);
+        }
+        public static Test suite () {
+            Object[][] inputs = readPrimitiveInputs ("parseint.dat");
+            return suite (inputs);
+        }
+    }
+
+where <code>parseint.dat</code> contains the following data:
+
+"1" 1
+"5" 5
+"0" 0
